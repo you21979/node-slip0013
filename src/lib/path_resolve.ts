@@ -1,7 +1,5 @@
 import { createHash } from 'crypto'
 
-const BIP43_PURPOSE: number = 13
-
 export const pushBuffer = (uri: string, index: number): Buffer => {
     const buf = Buffer.concat([Buffer.alloc(4), Buffer.from(uri)])
     buf.writeInt32LE(index, 0)
@@ -29,7 +27,6 @@ export const removeHardend = ( n: number ): number => {
 export const resolvePath = (uri: string, index: number): Array<number> => {
     const buf = bufferToHash(pushBuffer(uri, index)).slice(0, 16)
     const path = splitBuffer(buf, 4).map( v => v.readUInt32LE(0) )
-    const hdpath = [BIP43_PURPOSE].concat(path)
-    return hdpath
+    return path
 }
 

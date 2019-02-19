@@ -5,8 +5,12 @@ export const derivePath = ( parentnode: BIP32, pathlist: Array<number> ): BIP32 
     return pathlist.reduce((r, v) => r.deriveHardened( removeHardend(v) ), parentnode)
 }
 
-export const deriveUri = (parentnode: BIP32, uri: string, index: number): BIP32 => {
+export const deriveUri = ( parentnode: BIP32, uri: string, index: number ): BIP32 => {
     const pathlist = resolvePath(uri, index)
     return derivePath(parentnode, pathlist)
 }
 
+export const deriveBitID = ( parentnode: BIP32, uri: string, index: number ): BIP32 => {
+    const BIP43_PURPOSE = 13
+    return deriveUri( parentnode.deriveHardened(BIP43_PURPOSE), uri, index )
+}
