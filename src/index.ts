@@ -1,1 +1,1 @@
-export { deriveUri } from './lib/path_derive'
+export { deriveUri, deriveBitID } from './lib/path_derive'
