@@ -23,6 +23,7 @@
     "authenticate"
   ],
   "dependencies": {
+    "bitcoinjs-lib": "4.0.*",
     "bip32": "^1.0.2"
   },
   "devDependencies": {
@@ -32,7 +33,6 @@
     "@types/bip39": "2.4.2",
     "@types/bitcoinjs-lib": "4.0.0",
     "bip39": "2.5.0",
-    "bitcoinjs-lib": "4.0.*",
     "typescript": "^3.0.0",
     "istanbul": "^0.4.5",
     "coveralls": "^3.0.0",

@@ -10,7 +10,3 @@ export const deriveUri = ( parentnode: BIP32, uri: string, index: number ): BIP3
     return derivePath(parentnode, pathlist)
 }
 
-export const deriveBitID = ( parentnode: BIP32, uri: string, index: number ): BIP32 => {
-    const BIP43_PURPOSE = 13
-    return deriveUri( parentnode.deriveHardened(BIP43_PURPOSE), uri, index )
-}

@@ -4,8 +4,10 @@ import * as bip39 from 'bip39'
 import * as bitcoin from 'bitcoinjs-lib'
 import * as resolve from '../lib/path_resolve'
 import * as derive from '../lib/path_derive'
+import * as cr from '../lib/challenge_response'
+import * as bitid from '../lib/bitid'
 
-describe('slip0013 test', () => {
+describe('slip0013 path test', () => {
     const uri = "https://satoshi@bitcoin.org/login"
     const index = 0
     const anshash = "d0e2389d4c8394a9f3e32de01104bf6e8db2d9e2bb0905d60fffa5a18fd696db"
@@ -24,7 +26,7 @@ describe('slip0013 test', () => {
     })
 })
 
-describe('bitid test', () => {
+describe('bitid hd test', () => {
     const mnemonic = "inhale praise target steak garlic cricket paper better evil almost sadness crawl city banner amused fringe fox insect roast aunt prefer hollow basic ladder"
     const uri = "http://bitid.bitcoin.blue/callback"
     const index = 0
@@ -44,8 +46,23 @@ describe('bitid test', () => {
         assert(hash === anshash)
     })
     it('internal test 3', () => {
-        const node = derive.deriveBitID(masternode, uri, index)
+        const node = bitid.derive(masternode, uri, index)
         const addr = bitcoin.payments.p2pkh({ pubkey: node.publicKey }).address
         assert(addr === ansaddr)
     })
 })
+describe('bitid sign test', () => {
+    const mnemonic = "inhale praise target steak garlic cricket paper better evil almost sadness crawl city banner amused fringe fox insect roast aunt prefer hollow basic ladder"
+    const uri = "http://bitid.bitcoin.blue/callback"
+    const index = 0
+    const seed = bip39.mnemonicToSeed(mnemonic, "")
+    const masternode = bip32.fromSeed(seed)
+    const node = bitid.derive(masternode, uri, index)
+    const bitiduri = "bitid:bitid.bitcoin.blue/callback?x=10000000"
+
+    it('internal test 1', () => {
+        const data = bitid.sign(node, bitiduri)
+        assert(bitid.verify(data) === true)
+    })
+})
+
