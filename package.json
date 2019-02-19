@@ -1,0 +1,53 @@
+{
+  "name": "slip0013",
+  "version": "0.0.1",
+  "description": "implements SLIP-0013 : Authentication using deterministic hierarchy",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "example",
+    "package.json",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/you21979/node-slip0013.git"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "keywords": [
+    "slip0013",
+    "authenticate"
+  ],
+  "dependencies": {
+    "bip32": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^9.6.0",
+    "@types/mocha": "^5.0.0",
+    "@types/bip32": "^1.0.1",
+    "@types/bip39": "2.4.2",
+    "@types/bitcoinjs-lib": "4.0.0",
+    "bip39": "2.5.0",
+    "bitcoinjs-lib": "4.0.*",
+    "typescript": "^3.0.0",
+    "istanbul": "^0.4.5",
+    "coveralls": "^3.0.0",
+    "mocha": "^5.0.5"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "./node_modules/.bin/tsc -p ./",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha ./dist/test",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+  },
+  "author": "Yuki Akiyama",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/you21979/node-slip0013/issues"
+  },
+  "homepage": "https://github.com/you21979/node-slip0013#readme"
+}
