@@ -19,7 +19,8 @@
     "node": ">=6"
   },
   "keywords": [
-    "slip0013",
+    "slip-0013",
+    "bitid",
     "authenticate"
   ],
   "dependencies": {
