@@ -1,7 +1,12 @@
 # node-slip0013
-implements  SLIP-0013 : Authentication using deterministic hierarchy
 
-https://github.com/satoshilabs/slips/blob/master/slip-0013.mdo
+## implements SLIP-0013 : Authentication using deterministic hierarchy
+
+https://github.com/satoshilabs/slips/blob/master/slip-0013.md
+
+## implements bitID
+
+https://github.com/bitid/bitid/blob/master/BIP_draft.md
 
 
 # install
@@ -18,7 +23,7 @@ npm i slip0013
 npm i bip39 bitcoinjs-lib bitcoinjs-message
 ```
 
-## sample code
+## bitid sample code
 
 ```
 const slip13 = require("slip0013")
